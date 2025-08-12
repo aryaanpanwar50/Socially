@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-
+import Image from 'next/image';
 import { getNotifications, markNotificationsAsRead } from '@/actions/notification.action';
 import toast from 'react-hot-toast';
 import { NotificationsSkeleton } from '@/components/NotificationsSkeleton';
@@ -42,7 +42,7 @@ const NotificationsPage = () => {
                     await markNotificationsAsRead(unreadIds)
                 }
             }catch(error){
-
+                console.error("Failed to load notifications:", error);
                 toast.error("Unable to get the notifications")
 
             }finally{
@@ -103,10 +103,13 @@ const NotificationsPage = () => {
                           <div className="text-sm text-muted-foreground rounded-md p-2 bg-muted/30 mt-2">
                             <p>{notification.post.content}</p>
                             {notification.post.image && (
-                              <img
+                              <Image
                                 src={notification.post.image}
                                 alt="Post content"
+                                width={200}
+                                height={150}
                                 className="mt-2 rounded-md w-full max-w-[200px] h-auto object-cover"
+                                unoptimized
                               />
                             )}
                           </div>

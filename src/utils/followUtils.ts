@@ -14,7 +14,7 @@ export const triggerFollowUpdateClient = () => {
 };
 
 // Enhanced toggleFollow wrapper that includes immediate UI updates
-export const toggleFollowWithUpdate = async (toggleFollowFn: () => Promise<any>) => {
+export const toggleFollowWithUpdate = async (toggleFollowFn: () => Promise<{ success: boolean; error?: string }>) => {
   try {
     const result = await toggleFollowFn();
     
