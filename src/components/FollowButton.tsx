@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { Loader2Icon } from "lucide-react";
 import toast from "react-hot-toast";
 import { toggleFollow } from "@/actions/user.action";
+import { triggerFollowUpdateClient } from "@/utils/followUtils";
 
 function FollowButton({ userId }: { userId: string }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,9 +14,17 @@ function FollowButton({ userId }: { userId: string }) {
     setIsLoading(true);
 
     try {
-      await toggleFollow(userId);
-      toast.success("User followed successfully");
-    } catch (error) {
+      const result = await toggleFollow(userId);
+      
+      // Trigger immediate UI update
+      triggerFollowUpdateClient();
+      
+      if (result?.success) {
+        toast.success("User followed successfully");
+      } else {
+        toast.error("Error following user");
+      }
+    } catch {
       toast.error("Error following user");
     } finally {
       setIsLoading(false);

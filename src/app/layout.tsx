@@ -41,17 +41,28 @@ export default function RootLayout({
             disableTransitionOnChange
             
           >
-            <div className="min-h-screen">
-              <NavBar />
-              <main className="py-8">
-                {/* container to center the content */}
-                <div className="max-w-7xl mx-auto px-4">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <div className="hidden lg:block lg:col-span-3"><SideBar/></div>
-                    <div className="lg:col-span-9">{children}</div>
+            <div className="min-h-screen w-full relative">
+              {/* Radial Gradient Background for Light Mode */}
+              <div
+                className="absolute inset-0 z-0 dark:hidden"
+                style={{
+                  background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
+                }}
+              />
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <NavBar />
+                <main className="py-8 pt-36">
+                  {/* container to center the content */}
+                  <div className="max-w-7xl mx-auto px-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                      <div className="hidden lg:block lg:col-span-3"><SideBar/></div>
+                      <div className="lg:col-span-9">{children}</div>
+                    </div>
                   </div>
-                </div>
-              </main>
+                </main>
+              </div>
             </div>
             <Toaster/>
           </ThemeProvider>

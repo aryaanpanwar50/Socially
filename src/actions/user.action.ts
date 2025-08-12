@@ -154,6 +154,12 @@ export async function toggleFollow(targetUserId: string) {
     }
 
     revalidatePath("/");
+    
+    // Trigger real-time update for followed users component
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('followUpdate'));
+    }
+    
     return { success: true };
   } catch (error) {
     console.log("Error in toggleFollow", error);

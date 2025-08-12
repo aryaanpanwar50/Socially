@@ -18,6 +18,9 @@ export async function generateMetadata({ params }: { params: { username: string 
 }
 
 async function ProfilePageServer({ params }: { params: { username: string } }) {
+  // Add 2 second delay to see the loading animation
+  await new Promise(resolve => setTimeout(resolve, 2000));
+  
   const user = await getProfileByUsername(params.username);
 
   if (!user) notFound();

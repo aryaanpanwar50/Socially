@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import DesktopNavbar from "./DesktopNavbar";
 import MobileNavbar from "./MobileNavbar";
@@ -11,18 +10,10 @@ const NavBar = async() => {
     await syncUser(); //POST 
   }
   return (
-    <nav className="sticky top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-primary font-mono tracking-wider">
-              Socially
-            </Link>
-          </div>
-
-          <DesktopNavbar />
-          <MobileNavbar />
-        </div>
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-background/80 backdrop-blur-md border border-border rounded-full px-8 py-4 z-50 shadow-lg">
+      <div className="flex items-center justify-center space-x-6">
+        <DesktopNavbar />
+        <MobileNavbar />
       </div>
     </nav>
   );
