@@ -238,7 +238,7 @@ function ProfilePageClient({
         </Tabs>
 
         <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
-          <DialogContent className="sm:max-w-[500px] card-blend-light border border-border/20">
+          <DialogContent className="sm:max-w-[500px] bg-background/95 border border-border/20 shadow-xl">
             <DialogHeader>
               <DialogTitle>Edit Profile</DialogTitle>
             </DialogHeader>
@@ -250,6 +250,7 @@ function ProfilePageClient({
                   value={editForm.name}
                   onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
                   placeholder="Your name"
+                  className="bg-background border-border/30"
                 />
               </div>
               <div className="space-y-2">
@@ -258,7 +259,7 @@ function ProfilePageClient({
                   name="bio"
                   value={editForm.bio}
                   onChange={(e) => setEditForm({ ...editForm, bio: e.target.value })}
-                  className="min-h-[100px]"
+                  className="min-h-[100px] bg-background border-border/30"
                   placeholder="Tell us about yourself"
                 />
               </div>
@@ -269,6 +270,7 @@ function ProfilePageClient({
                   value={editForm.location}
                   onChange={(e) => setEditForm({ ...editForm, location: e.target.value })}
                   placeholder="Where are you based?"
+                  className="bg-background border-border/30"
                 />
               </div>
               <div className="space-y-2">
@@ -278,6 +280,7 @@ function ProfilePageClient({
                   value={editForm.website}
                   onChange={(e) => setEditForm({ ...editForm, website: e.target.value })}
                   placeholder="Your personal website"
+                  className="bg-background border-border/30"
                 />
               </div>
             </div>
