@@ -1,10 +1,10 @@
 import { BellIcon, HomeIcon, UserIcon } from "lucide-react";
 import DrawOutlineButton from "@/components/ui/draw-outline-button";
-import Link from "next/link";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import ModeToggle from "./ModeToggle";
 import FollowedUsers from "./FollowedUsers";
 import { currentUser } from "@clerk/nextjs/server";
+import NavItem from "./NavItem";
 
 async function DesktopNavbar() {
   const user = await currentUser();
@@ -13,29 +13,22 @@ async function DesktopNavbar() {
     <div className="flex items-center justify-center space-x-4">
       
    
-      <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary" asChild>
-        <Link href="/">
-          <HomeIcon className="w-6 h-6" />
-        </Link>
-      </DrawOutlineButton>
+      <NavItem 
+        href="/" 
+        icon={<HomeIcon className="w-6 h-6" />}
+      />
 
       {user ? (
         <>
-          <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary" asChild>
-            <Link href="/notifications">
-              <BellIcon className="w-6 h-6" />
-            </Link>
-          </DrawOutlineButton>
+          <NavItem 
+            href="/notifications" 
+            icon={<BellIcon className="w-6 h-6" />}
+          />
           <FollowedUsers />
-          <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary" asChild>
-            <Link
-              href={`/profile/${
-                user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]
-              }`}
-            >
-              <UserIcon className="w-6 h-6" />
-            </Link>
-          </DrawOutlineButton>
+          <NavItem 
+            href={`/profile/${user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]}`}
+            icon={<UserIcon className="w-6 h-6" />}
+          />
           
           {/* Separator */}
           <div className="w-px h-6 bg-border mx-2"></div>
