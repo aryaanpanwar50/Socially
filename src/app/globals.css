@@ -7,6 +7,201 @@
     text-wrap: balance;
   }
   
+  /* Mix Blend Mode utilities for card blending */
+  .blend-multiply {
+    mix-blend-mode: multiply;
+  }
+  
+  .blend-overlay {
+    mix-blend-mode: overlay;
+  }
+  
+  .blend-soft-light {
+    mix-blend-mode: soft-light;
+  }
+  
+  .blend-color-burn {
+    mix-blend-mode: color-burn;
+  }
+  
+  .blend-color-dodge {
+    mix-blend-mode: color-dodge;
+  }
+  
+  .blend-hard-light {
+    mix-blend-mode: hard-light;
+  }
+  
+  .blend-difference {
+    mix-blend-mode: difference;
+  }
+  
+  .blend-luminosity {
+    mix-blend-mode: luminosity;
+  }
+  
+  /* Custom blended card backgrounds */
+  .card-blend {
+    background-color: rgba(255, 255, 255, 0.4);
+    mix-blend-mode: multiply;
+  }
+  
+  .card-blend-light {
+    background-color: rgba(255, 255, 255, 0.6);
+    mix-blend-mode: soft-light;
+  }
+  
+  .card-blend-overlay {
+    background-color: rgba(255, 255, 255, 0.3);
+    mix-blend-mode: overlay;
+  }
+  
+  /* Ensure text elements don't blend */
+  .card-blend > *,
+  .card-blend-light > *,
+  .card-blend-overlay > * {
+    mix-blend-mode: normal !important;
+  }
+  
+  /* Simplified and more reliable dark mode blending */
+  .dark .card-blend {
+    background: rgba(15, 15, 15, 0.8);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+  }
+  
+  .dark .card-blend-light {
+    background: rgba(20, 20, 20, 0.7);
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.08);
+  }
+  
+  .dark .card-blend-overlay {
+    background: rgba(10, 10, 10, 0.6);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.05);
+  }
+  
+  /* Ensure text stays readable - no blending on text elements */
+  .card-blend *,
+  .card-blend-light *,
+  .card-blend-overlay *,
+  .card-blend-cosmic *,
+  .card-blend-cosmic-light *,
+  .card-blend-cosmic-soft * {
+    mix-blend-mode: normal !important;
+    color: inherit;
+  }
+  
+  /* Enhanced dark mode cosmic effects without complex blend modes */
+  .dark .card-blend-cosmic {
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.15);
+  }
+  
+  .dark .card-blend-cosmic-light {
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.12);
+  }
+  
+  .dark .card-blend-cosmic-soft {
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.08);
+  }
+  
+  /* Light mode cosmic blending */
+  .card-blend-cosmic {
+    background: rgba(124, 58, 237, 0.08);
+    mix-blend-mode: multiply;
+  }
+  
+  .card-blend-cosmic-light {
+    background: rgba(124, 58, 237, 0.05);
+    mix-blend-mode: overlay;
+  }
+  
+  .card-blend-cosmic-soft {
+    background: rgba(124, 58, 237, 0.06);
+    mix-blend-mode: soft-light;
+  }
+  
+  /* Preserve text readability in cosmic blends */
+  .card-blend-cosmic > *,
+  .card-blend-cosmic-light > *,
+  .card-blend-cosmic-soft > * {
+    mix-blend-mode: normal !important;
+  }
+  
+  /* Special blending for interactive elements */
+  .blend-interactive {
+    transition: all 0.3s ease;
+  }
+  
+  .blend-interactive:hover {
+    mix-blend-mode: overlay;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .dark .blend-interactive:hover {
+    background: rgba(255, 255, 255, 0.08);
+    mix-blend-mode: overlay;
+  }
+  
+  /* Blending for navigation and UI elements */
+  .nav-blend {
+    background: rgba(255, 255, 255, 0.5);
+    mix-blend-mode: multiply;
+    backdrop-filter: blur(8px);
+  }
+  
+  .dark .nav-blend {
+    background: rgba(255, 255, 255, 0.04);
+    mix-blend-mode: screen;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Alternative dark mode styles without mix-blend-mode for better compatibility */
+  .dark .card-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .card-glass-light {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .dark .card-glass-overlay {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  /* Light mode glass alternatives */
+  .card-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .card-glass-light {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  
+  .card-glass-overlay {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
   /* Custom animations for enhanced UX */
   @keyframes shimmer {
     0% { background-position: -200px 0; }

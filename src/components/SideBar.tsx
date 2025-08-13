@@ -21,7 +21,7 @@ const SideBar = async() => {
     // console.log({user})
   return (
     <div className="sticky top-20">
-        <Card className="overflow-hidden border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card via-card to-card/95">
+        <Card className="overflow-hidden border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300 card-blend-light">
         <CardContent className="pt-8 pb-6 px-6">
           <div className="flex flex-col items-center text-center">
             <Link
@@ -42,7 +42,7 @@ const SideBar = async() => {
             </Link>
 
             {user.bio && (
-              <div className="mt-4 p-3 bg-muted/30 rounded-lg border border-border/30">
+              <div className="mt-4 p-3 card-blend-overlay rounded-lg border border-border/20">
                 <p className="text-sm text-muted-foreground/90 leading-relaxed">{user.bio}</p>
               </div>
             )}
@@ -64,11 +64,11 @@ const SideBar = async() => {
             </div>
 
             <div className="w-full space-y-3 text-sm">
-              <div className="flex items-center text-muted-foreground/80 p-2 rounded-lg bg-muted/20 border border-border/20">
+              <div className="flex items-center text-muted-foreground/80 p-2 rounded-lg card-blend-overlay border border-border/15">
                 <MapPinIcon className="w-4 h-4 mr-3 text-primary/70 flex-shrink-0" />
                 <span className="truncate">{user.location || "Location not specified"}</span>
               </div>
-              <div className="flex items-center text-muted-foreground/80 p-2 rounded-lg bg-muted/20 border border-border/20">
+              <div className="flex items-center text-muted-foreground/80 p-2 rounded-lg card-blend-overlay border border-border/15">
                 <LinkIcon className="w-4 h-4 mr-3 text-primary/70 flex-shrink-0" />
                 {user.website ? (
                   <a 
@@ -95,14 +95,14 @@ export default SideBar
 
 const UnAuthenticatedSidebar = () => (
   <div className="sticky top-20">
-    <Card className="overflow-hidden border border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-card via-card to-card/95">
+    <Card className="overflow-hidden border border-border/30 shadow-lg hover:shadow-xl transition-all duration-300 card-blend-light">
       <CardHeader className="pb-4">
         <CardTitle className="text-center text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
           Welcome Back!
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="text-center p-4 bg-gradient-to-br from-muted/30 to-muted/10 rounded-lg border border-border/30">
+        <div className="text-center p-4 card-blend rounded-lg border border-border/20">
           <p className="text-muted-foreground/90 leading-relaxed">
             Join our community to connect with others, share your thoughts, and discover amazing content.
           </p>
@@ -121,7 +121,7 @@ const UnAuthenticatedSidebar = () => (
           </SignUpButton>
         </div>
         
-        <div className="pt-2 border-t border-border/30">
+        <div className="pt-2 border-t border-border/20">
           <p className="text-xs text-center text-muted-foreground/70">
             By signing up, you agree to our terms of service
           </p>

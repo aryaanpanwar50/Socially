@@ -1,7 +1,7 @@
 "use client";
 
 import { UsersIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import DrawOutlineButton from "@/components/ui/draw-outline-button";
 import Link from "next/link";
 import { useFollowedUsers } from "@/hooks/useFollowedUsers";
 
@@ -10,22 +10,22 @@ function FollowedUsers() {
 
   if (isLoading) {
     return (
-      <Button variant="ghost" size="icon" className="rounded-full hover:bg-accent w-12 h-12">
+      <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary">
         <UsersIcon className="w-6 h-6 animate-pulse" />
-      </Button>
+      </DrawOutlineButton>
     );
   }
 
   if (followedUsers.length === 0 && !isLoading) {
     return (
-      <Button variant="ghost" size="icon" className="rounded-full hover:bg-accent w-12 h-12 opacity-50">
+      <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary opacity-50">
         <UsersIcon className="w-6 h-6" />
-      </Button>
+      </DrawOutlineButton>
     );
   }
 
   return (
-    <Button variant="ghost" size="icon" className="rounded-full hover:bg-accent w-12 h-12 relative" asChild>
+    <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary relative" asChild>
       <Link href="/following">
         <UsersIcon className="w-6 h-6" />
         {followedUsers.length > 0 && (
@@ -34,7 +34,7 @@ function FollowedUsers() {
           </span>
         )}
       </Link>
-    </Button>
+    </DrawOutlineButton>
   );
 }
 

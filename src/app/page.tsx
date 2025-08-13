@@ -23,8 +23,14 @@ export default async function Home() {
               ))}
             </div>
           </div>
-          <div className="hidden lg:block lg:col-span-1 sticky top-20">
+          <div className="hidden lg:block lg:col-span-1 sticky top-20 space-y-6">
              <WhoToFollow/>
+             {/* Optional: Add a cosmic accent card */}
+             <div className="card-blend-cosmic rounded-lg p-4 border border-border/10">
+               <div className="text-center text-sm text-muted-foreground/70">
+                 ✨ Discover amazing content
+               </div>
+             </div>
           </div>
         </div>
       </div>

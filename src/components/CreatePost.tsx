@@ -41,7 +41,7 @@ function CreatePost() {
   };
 
   return (
-    <Card className="mb-6">
+    <Card className="mb-6 card-blend-light border border-border/20">
       <CardContent className="pt-6">
         <div className="space-y-4">
           <div className="flex space-x-4">
@@ -58,7 +58,7 @@ function CreatePost() {
           </div>
 
           {(showImageUpload || imageUrl) && (
-            <div className="border rounded-lg p-4">
+            <div className="border rounded-lg p-4 card-blend-overlay border-border/15">
               <ImageUpload
                 endpoint="postImage"
                 value={imageUrl}
@@ -70,7 +70,7 @@ function CreatePost() {
             </div>
           )}
 
-          <div className="flex items-center justify-between border-t pt-4">
+          <div className="flex items-center justify-between border-t pt-4 border-border/20">
             <div className="flex space-x-2">
               <Button
                 type="button"

@@ -19,7 +19,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Social Media",
+  title: "Socially",
   description: "Social media application powered by Next.js",
   
 };
@@ -43,13 +43,30 @@ export default function RootLayout({
             
           >
             <div className="min-h-screen w-full relative">
-              {/* Radial Gradient Background for Light Mode */}
+              {/* Enhanced Radial Gradient Background for Light Mode */}
               <div
                 className="absolute inset-0 z-0 dark:hidden"
                 style={{
                   background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #7c3aed 100%)",
                 }}
               />
+              
+              {/* Enhanced Dark Mode Cosmic Background */}
+              <div className="absolute inset-0 z-0 hidden dark:block">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99, 102, 241, 0.3), transparent 70%), #000000",
+                  }}
+                />
+                {/* Additional cosmic overlay */}
+                <div
+                  className="absolute inset-0 opacity-30"
+                  style={{
+                    background: "radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.2), transparent 50%), radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.15), transparent 50%)",
+                  }}
+                />
+              </div>
               
               {/* Content */}
               <div className="relative z-10">

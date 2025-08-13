@@ -35,8 +35,8 @@ function FollowingPageClient({ followedUsers: initialFollowedUsers }: FollowingP
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       {/* Header */}
-      <Card>
-        <CardHeader>
+      <Card className="card-blend-light border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300">
+        <CardHeader className="card-blend-overlay">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="icon" asChild>
@@ -58,15 +58,15 @@ function FollowingPageClient({ followedUsers: initialFollowedUsers }: FollowingP
 
       {/* Search */}
       {followedUsers.length > 0 && (
-        <Card>
-          <CardContent className="pt-6">
+        <Card className="card-blend-light border border-border/20">
+          <CardContent className="pt-6 card-blend-overlay">
             <div className="relative">
               <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search followed users..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 border-border/20"
               />
             </div>
           </CardContent>
@@ -74,13 +74,15 @@ function FollowingPageClient({ followedUsers: initialFollowedUsers }: FollowingP
       )}
 
       {/* Users List */}
-      <Card>
+      <Card className="card-blend-light border border-border/20">
         <CardContent className="p-0">
           {filteredUsers.length === 0 ? (
-            <div className="p-8 text-center">
+            <div className="p-8 text-center card-blend-overlay rounded-lg m-4 border border-border/15">
               {followedUsers.length === 0 ? (
                 <div className="space-y-4">
-                  <UsersIcon className="w-16 h-16 text-muted-foreground mx-auto" />
+                  <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                    <UsersIcon className="w-8 h-8 text-primary/50" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-semibold">No following yet</h3>
                     <p className="text-muted-foreground">
@@ -93,7 +95,9 @@ function FollowingPageClient({ followedUsers: initialFollowedUsers }: FollowingP
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <SearchIcon className="w-16 h-16 text-muted-foreground mx-auto" />
+                  <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                    <SearchIcon className="w-8 h-8 text-primary/50" />
+                  </div>
                   <div>
                     <h3 className="text-lg font-semibold">No results found</h3>
                     <p className="text-muted-foreground">
@@ -107,15 +111,15 @@ function FollowingPageClient({ followedUsers: initialFollowedUsers }: FollowingP
               )}
             </div>
           ) : (
-            <div className="divide-y">
+            <div className="divide-y divide-border/15">
               {filteredUsers.map((user, index) => (
-                <div key={user.id} className="p-6 hover:bg-accent/50 transition-colors">
+                <div key={user.id} className="p-6 hover:card-blend-cosmic-soft transition-all duration-300 card-blend-overlay">
                   <div className="flex items-center justify-between">
                     <Link
                       href={`/profile/${user.username}`}
                       className="flex items-center space-x-4 flex-1 min-w-0"
                     >
-                      <Avatar className="w-12 h-12 border-2 border-border">
+                      <Avatar className="w-12 h-12 border-2 border-border/30">
                         <AvatarImage src={user.image || "/avatar.png"} />
                       </Avatar>
                       <div className="flex-1 min-w-0">
@@ -153,8 +157,8 @@ function FollowingPageClient({ followedUsers: initialFollowedUsers }: FollowingP
 
       {/* Stats Footer */}
       {followedUsers.length > 0 && (
-        <Card>
-          <CardContent className="pt-6">
+        <Card className="card-blend-light border border-border/20">
+          <CardContent className="pt-6 card-blend-overlay">
             <div className="flex items-center justify-between text-sm text-muted-foreground">
               <span>
                 Showing {filteredUsers.length} of {followedUsers.length} followed users

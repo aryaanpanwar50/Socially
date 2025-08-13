@@ -100,7 +100,7 @@ function ProfilePageClient({
     <div className="max-w-3xl mx-auto">
       <div className="grid grid-cols-1 gap-6">
         <div className="w-full max-w-lg mx-auto">
-          <Card className="bg-card">
+          <Card className="card-blend-light border border-border/20">
             <CardContent className="pt-6">
               <div className="flex flex-col items-center text-center">
                 <Avatar className="w-24 h-24">
@@ -185,7 +185,7 @@ function ProfilePageClient({
         </div>
 
         <Tabs defaultValue="posts" className="w-full">
-          <TabsList className="w-full justify-start border-b rounded-none h-auto p-0 bg-transparent">
+          <TabsList className="w-full justify-start border-b rounded-none h-auto p-0 bg-transparent card-blend-overlay">
             <TabsTrigger
               value="posts"
               className="flex items-center gap-2 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-primary
@@ -209,7 +209,13 @@ function ProfilePageClient({
               {posts.length > 0 ? (
                 posts.map((post) => <PostCard key={post.id} post={post} dbUserId={user.id} />)
               ) : (
-                <div className="text-center py-8 text-muted-foreground">No posts yet</div>
+                <div className="text-center py-8 text-muted-foreground card-blend-overlay rounded-lg p-6 border border-border/15">
+                  <div className="space-y-2">
+                    <FileTextIcon className="size-12 mx-auto opacity-50" />
+                    <p>No posts yet</p>
+                    <p className="text-sm opacity-70">Share your thoughts with the world!</p>
+                  </div>
+                </div>
               )}
             </div>
           </TabsContent>
@@ -219,14 +225,20 @@ function ProfilePageClient({
               {likedPosts.length > 0 ? (
                 likedPosts.map((post) => <PostCard key={post.id} post={post} dbUserId={user.id} />)
               ) : (
-                <div className="text-center py-8 text-muted-foreground">No liked posts to show</div>
+                <div className="text-center py-8 text-muted-foreground card-blend-overlay rounded-lg p-6 border border-border/15">
+                  <div className="space-y-2">
+                    <HeartIcon className="size-12 mx-auto opacity-50" />
+                    <p>No liked posts to show</p>
+                    <p className="text-sm opacity-70">Posts you like will appear here</p>
+                  </div>
+                </div>
               )}
             </div>
           </TabsContent>
         </Tabs>
 
         <Dialog open={showEditDialog} onOpenChange={setShowEditDialog}>
-          <DialogContent className="sm:max-w-[500px]">
+          <DialogContent className="sm:max-w-[500px] card-blend-light border border-border/20">
             <DialogHeader>
               <DialogTitle>Edit Profile</DialogTitle>
             </DialogHeader>

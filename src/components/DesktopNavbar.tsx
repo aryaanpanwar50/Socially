@@ -1,5 +1,5 @@
 import { BellIcon, HomeIcon, UserIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import DrawOutlineButton from "@/components/ui/draw-outline-button";
 import Link from "next/link";
 import { SignInButton, UserButton } from "@clerk/nextjs";
 import ModeToggle from "./ModeToggle";
@@ -13,21 +13,21 @@ async function DesktopNavbar() {
     <div className="flex items-center justify-center space-x-4">
       
    
-      <Button variant="ghost" size="icon" className="rounded-full hover:bg-accent w-12 h-12" asChild>
+      <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary" asChild>
         <Link href="/">
           <HomeIcon className="w-6 h-6" />
         </Link>
-      </Button>
+      </DrawOutlineButton>
 
       {user ? (
         <>
-          <Button variant="ghost" size="icon" className="rounded-full hover:bg-accent w-12 h-12" asChild>
+          <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary" asChild>
             <Link href="/notifications">
               <BellIcon className="w-6 h-6" />
             </Link>
-          </Button>
+          </DrawOutlineButton>
           <FollowedUsers />
-          <Button variant="ghost" size="icon" className="rounded-full hover:bg-accent w-12 h-12" asChild>
+          <DrawOutlineButton className="rounded-full hover:bg-accent w-12 h-12 flex items-center justify-center text-foreground hover:text-primary" asChild>
             <Link
               href={`/profile/${
                 user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]
@@ -35,7 +35,7 @@ async function DesktopNavbar() {
             >
               <UserIcon className="w-6 h-6" />
             </Link>
-          </Button>
+          </DrawOutlineButton>
           
           {/* Separator */}
           <div className="w-px h-6 bg-border mx-2"></div>
@@ -49,7 +49,9 @@ async function DesktopNavbar() {
         <>
           <ModeToggle />
           <SignInButton mode="modal">
-            <Button size="sm" className="rounded-full px-4">Sign In</Button>
+            <DrawOutlineButton className="rounded-full px-4 py-2 text-sm font-medium">
+              Sign In
+            </DrawOutlineButton>
           </SignInButton>
         </>
       )}

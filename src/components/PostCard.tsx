@@ -80,7 +80,7 @@ const PostCard = ({post,dbUserId}:{post:Post , dbUserId:string | null}) => {
 
     
   return (
-    <Card className="overflow-hidden border border-border/50 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-br from-card via-card to-card/95">
+    <Card className="overflow-hidden border border-border/30 shadow-sm hover:shadow-md transition-all duration-300 card-glass-light">
       <CardContent className="p-5 sm:p-7">
         <div className="space-y-5">
           <div className="flex space-x-4">
@@ -183,11 +183,11 @@ const PostCard = ({post,dbUserId}:{post:Post , dbUserId:string | null}) => {
 
           {/* COMMENTS SECTION */}
           {showComments && (
-            <div className="space-y-5 pt-5 border-t border-border/30 bg-gradient-to-br from-muted/20 to-transparent rounded-lg p-4 -mx-1">
+            <div className="space-y-5 pt-5 border-t border-border/20 card-blend rounded-lg p-4 -mx-1">
               <div className="space-y-4">
                 {/* DISPLAY COMMENTS */}
                 {post.comments.map((comment) => (
-                  <div key={comment.id} className="flex space-x-3 p-3 rounded-lg bg-card/50 border border-border/30 hover:bg-card/80 transition-colors duration-200">
+                  <div key={comment.id} className="flex space-x-3 p-3 rounded-lg card-blend-overlay border border-border/20 hover:opacity-90 transition-all duration-200">
                     <Avatar className="size-8 flex-shrink-0 ring-1 ring-border/20">
                       <AvatarImage src={comment.author.image ?? "/avatar.png"} className="object-cover" />
                     </Avatar>
@@ -209,7 +209,7 @@ const PostCard = ({post,dbUserId}:{post:Post , dbUserId:string | null}) => {
               </div>
 
               {user ? (
-                <div className="flex space-x-3 p-4 bg-card/30 rounded-lg border border-border/30">
+                <div className="flex space-x-3 p-4 card-blend-light rounded-lg border border-border/20">
                   <Avatar className="size-9 flex-shrink-0 ring-2 ring-primary/20">
                     <AvatarImage src={user?.imageUrl || "/avatar.png"} className="object-cover" />
                   </Avatar>
@@ -243,7 +243,7 @@ const PostCard = ({post,dbUserId}:{post:Post , dbUserId:string | null}) => {
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-center p-6 border-2 border-dashed border-border/30 rounded-xl bg-gradient-to-br from-muted/30 to-muted/10">
+                <div className="flex justify-center p-6 border-2 border-dashed border-border/20 rounded-xl card-blend">
                   <SignInButton mode="modal">
                     <Button variant="outline" className="gap-2 px-6 py-3 border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/50 transition-all duration-200">
                       <LogInIcon className="size-4" />

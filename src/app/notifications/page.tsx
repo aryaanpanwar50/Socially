@@ -58,10 +58,13 @@ const NotificationsPage = () => {
 
   return (
       <div className="space-y-4">
-      <Card>
-        <CardHeader className="border-b">
+      <Card className="card-blend-light border border-border/20 shadow-lg hover:shadow-xl transition-all duration-300">
+        <CardHeader className="border-b border-border/20 card-blend-overlay">
           <div className="flex items-center justify-between">
-            <CardTitle>Notifications</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              Notifications
+            </CardTitle>
             <span className="text-sm text-muted-foreground">
               {notifications.filter((n) => !n.read).length} unread
             </span>
@@ -70,13 +73,23 @@ const NotificationsPage = () => {
         <CardContent className="p-0">
           <ScrollArea className="h-[calc(100vh-12rem)]">
             {notifications.length === 0 ? (
-              <div className="p-4 text-center text-muted-foreground">No notifications yet</div>
+              <div className="p-8 text-center text-muted-foreground card-blend-overlay rounded-lg m-4 border border-border/15">
+                <div className="space-y-3">
+                  <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center">
+                    <HeartIcon className="size-8 text-primary/50" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">No notifications yet</h3>
+                    <p className="text-sm opacity-70">You&apos;ll see notifications here when someone interacts with your posts</p>
+                  </div>
+                </div>
+              </div>
             ) : (
               notifications.map((notification) => (
                 <div
                   key={notification.id}
-                  className={`flex items-start gap-4 p-4 border-b hover:bg-muted/25 transition-colors ${
-                    !notification.read ? "bg-muted/50" : ""
+                  className={`flex items-start gap-4 p-4 border-b border-border/15 hover:card-blend-cosmic-soft transition-all duration-300 ${
+                    !notification.read ? "card-blend-overlay" : "card-blend-overlay opacity-80"
                   }`}
                 >
                   <Avatar className="mt-1">
@@ -100,7 +113,7 @@ const NotificationsPage = () => {
                     {notification.post &&
                       (notification.type === "LIKE" || notification.type === "COMMENT") && (
                         <div className="pl-6 space-y-2">
-                          <div className="text-sm text-muted-foreground rounded-md p-2 bg-muted/30 mt-2">
+                          <div className="text-sm text-muted-foreground rounded-md p-3 card-blend-overlay border border-border/10 mt-2">
                             <p>{notification.post.content}</p>
                             {notification.post.image && (
                               <Image
@@ -108,14 +121,14 @@ const NotificationsPage = () => {
                                 alt="Post content"
                                 width={200}
                                 height={150}
-                                className="mt-2 rounded-md w-full max-w-[200px] h-auto object-cover"
+                                className="mt-2 rounded-md w-full max-w-[200px] h-auto object-cover border border-border/20"
                                 unoptimized
                               />
                             )}
                           </div>
 
                           {notification.type === "COMMENT" && notification.comment && (
-                            <div className="text-sm p-2 bg-accent/50 rounded-md">
+                            <div className="text-sm p-3 card-blend-cosmic-soft rounded-md border border-border/15">
                               {notification.comment.content}
                             </div>
                           )}

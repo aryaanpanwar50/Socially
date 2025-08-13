@@ -10,7 +10,7 @@ async function WhoToFollow() {
   if (users.length === 0) return null;
 
   return (
-    <Card>
+    <Card className="overflow-hidden border border-border/30 shadow-sm hover:shadow-lg transition-all duration-300 card-blend-light">
       <CardHeader>
         <CardTitle>Who to Follow</CardTitle>
       </CardHeader>
