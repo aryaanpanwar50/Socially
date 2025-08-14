@@ -2,6 +2,23 @@
 
 import { useEffect, useState } from "react";
 
+interface Notification {
+  id: string;
+  read: boolean;
+  type: string;
+  createdAt: string;
+  fromUser: {
+    id: string;
+    username: string;
+    name: string | null;
+    imageUrl: string | null;
+  };
+  post?: {
+    id: string;
+    content: string;
+  } | null;
+}
+
 interface NotificationBadgeProps {
   children: React.ReactNode;
 }
@@ -15,8 +32,8 @@ function NotificationBadge({ children }: NotificationBadgeProps) {
         // Using fetch API to get notifications from your API route
         const response = await fetch('/api/notifications');
         if (response.ok) {
-          const notifications = await response.json();
-          const unreadNotifications = notifications.filter((n: any) => !n.read);
+          const notifications: Notification[] = await response.json();
+          const unreadNotifications = notifications.filter((n: Notification) => !n.read);
           setUnreadCount(unreadNotifications.length);
         }
       } catch (error) {
